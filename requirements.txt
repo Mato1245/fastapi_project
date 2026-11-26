@@ -2,3 +2,5 @@ uvicorn
 pydantic
 fastapi
 sqlalchemy
+passlib
+bcrypt==4.0.1
