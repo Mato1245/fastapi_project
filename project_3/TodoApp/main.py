@@ -2,7 +2,7 @@ from fileinput import close
 
 from fastapi import FastAPI, Depends, HTTPException, status, Path
 from TodoApp.models import Todos
-from TodoApp.database import engine, sessionlocal
+from TodoApp.database import engine, SessionLocal
 from sqlalchemy.orm import Session 
 from typing import Annotated 
 from pydantic import BaseModel, Field
@@ -16,7 +16,7 @@ models.database.Base.metadata.create_all(bind=engine)
 app.include_router(auth.router)
 
 def get_db():
-    db = sessionlocal()
+    db = SessionLocal()
     try:
         yield db
     finally:
